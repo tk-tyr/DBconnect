@@ -18,20 +18,20 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class DBconnect_main extends Frame implements ActionListener,WindowListener{
 
 	public static void main(String[] args) {
-		DBconnect_main frame = new DBconnect_main();
-		frame.setBounds(5, 5, 655, 455);
-		frame.setTitle("Graph");
-		frame.setVisible(true);
+		DBconnect_main graph = new DBconnect_main();
+		graph.setBounds(5, 5, 655, 455);
+		graph.setVisible(true);
 	}
 
 	DBconnect_main(){
-		addWindowListener(this);
 		int id, ton;
 		String year,name;
 		ResultSet rs;
 		MySQL mysql = new MySQL();
 		rs = mysql.selectAll();
 
+		addWindowListener(this);
+		setTitle("Graph");
 		DefaultCategoryDataset data = new DefaultCategoryDataset();
 
 		try {
@@ -44,14 +44,14 @@ public class DBconnect_main extends Frame implements ActionListener,WindowListen
 				System.out.println("nameF" + name);
 				System.out.println("yearF" + year);
 				System.out.println("tonF" + ton);
-				data.addValue(ton, name, year);
+				data.addValue(ton,name,year);
 			} 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
 
-		JFreeChart chart = ChartFactory.createLineChart("Import Volume","Year","Ton",data,PlotOrientation.VERTICAL,true,false,false);
+		JFreeChart chart = ChartFactory.createLineChart3D("Import Volume","Year","Ton",data,PlotOrientation.VERTICAL,true,false,false);
 		ChartPanel cpanel = new ChartPanel(chart);
 		add(cpanel,BorderLayout.CENTER);
 		}
