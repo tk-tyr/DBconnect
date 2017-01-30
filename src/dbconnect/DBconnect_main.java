@@ -23,7 +23,7 @@ public class DBconnect_main extends Frame implements ActionListener,WindowListen
 		graph.setVisible(true);
 	}
 
-	DBconnect_main(){
+	public DBconnect_main(){
 		int id, ton;
 		String name,year;
 		ResultSet rs;
