@@ -25,7 +25,7 @@ public class DBconnect_main extends Frame implements ActionListener,WindowListen
 
 	DBconnect_main(){
 		int id, ton;
-		String year,name;
+		String name,year;
 		ResultSet rs;
 		MySQL mysql = new MySQL();
 		rs = mysql.selectAll();
@@ -40,21 +40,21 @@ public class DBconnect_main extends Frame implements ActionListener,WindowListen
 				name = rs.getString("name");
 				year = rs.getString("year");
 				ton = rs.getInt("ton");
-				System.out.println("IDF" + id);
-				System.out.println("nameF" + name);
-				System.out.println("yearF" + year);
-				System.out.println("tonF" + ton);
+				System.out.println("ID:" + id);
+				System.out.println("name:" + name);
+				System.out.println("year:" + year);
+				System.out.println("ton:" + ton);
 				data.addValue(ton,name,year);
 			} 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			}
+		}
 
 		JFreeChart chart = ChartFactory.createLineChart3D("Import Volume","Year","Ton",data,PlotOrientation.VERTICAL,true,false,false);
 		ChartPanel cpanel = new ChartPanel(chart);
 		add(cpanel,BorderLayout.CENTER);
-		}
+	}
 
 	@Override
 	public void windowOpened(WindowEvent e) {
