@@ -24,8 +24,8 @@ public class DBconnect_main extends Frame implements ActionListener,WindowListen
 	}
 
 	public DBconnect_main(){
-		int id, ton;
-		String name,year;
+		int id, ton, year;
+		String name;
 		ResultSet rs;
 		MySQL mysql = new MySQL();
 		rs = mysql.selectAll();
@@ -38,13 +38,13 @@ public class DBconnect_main extends Frame implements ActionListener,WindowListen
 			while(rs.next()){
 				id = rs.getInt("id");
 				name = rs.getString("name");
-				year = rs.getString("year");
+				year = rs.getInt("year");
 				ton = rs.getInt("ton");
 				System.out.println("ID:" + id);
 				System.out.println("name:" + name);
 				System.out.println("year:" + year);
 				System.out.println("ton:" + ton);
-				data.addValue(ton,name,year);
+				data.addValue(ton,name,String.valueOf(year));
 			} 	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
